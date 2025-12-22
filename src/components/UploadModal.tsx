@@ -90,7 +90,7 @@ const UploadModal = () => {
       }
 
       setIsLoading(false);
-      toast.error("Song Created");
+      toast.success("Song Created");
       reset();
       onClose();
     } catch (error) {

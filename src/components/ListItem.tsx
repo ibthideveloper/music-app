@@ -1,4 +1,5 @@
 import { FaPlay } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 interface ListItemProps {
   image: any; // Type must be updated
@@ -7,13 +8,17 @@ interface ListItemProps {
 }
 
 const ListItem = ({ image, name, href }: ListItemProps) => {
+  const navigate = useNavigate();
+
   const onClick = () => {
     // Authenticate
     // Routing
+
+    navigate("/liked");
   };
 
   return (
-    <div>
+    <div onClick={onClick}>
       <button
         className="relative group flex items-center rounded-md overflow-hidden gap-x-4 
     bg-neutral-100/10 hover:bg-neutral-100/20 transition pr-4

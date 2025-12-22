@@ -1,22 +1,27 @@
+import { Outlet } from "react-router-dom";
 import { routesList } from "../routes/routes";
+import usePlayer from "../hooks/usePlayer";
 
 import Box from "./Box";
 import Library from "./Library";
 import SidebarItem from "./SidebarItem";
+import type { Song } from "../../types/types";
+import { twMerge } from "tailwind-merge";
 
 interface SidebarProps {
   children?: React.ReactNode;
 }
 
-// export const Sidebar: React.FC<SidebarProps> = ({ children }) => {
-//   // return <div>{children}</div>;
-//   return <h1>Sidebar</h1>;
-// };
-
 export function Sidebar({ children }: SidebarProps) {
-  // return <div>{children}</div>;
+  const player = usePlayer();
+
   return (
-    <div className="flex h-full">
+    <div
+      className={twMerge(
+        `flex h-full`,
+        player.activeId && "h-[calc(100%-80px)]"
+      )}
+    >
       <div
         className="hidden md:flex flex-col gap-y-2 bg-black h-full
        w-[300px] p-2"
@@ -37,7 +42,9 @@ export function Sidebar({ children }: SidebarProps) {
           <Library />
         </Box>
       </div>
-      <main className="h-full flex-1 overflow-y-auto py-2">{children}</main>
+      <main className="h-full flex-1 overflow-y-auto py-2">
+        {children || <Outlet />}
+      </main>
     </div>
   );
 }

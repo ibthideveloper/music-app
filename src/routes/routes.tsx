@@ -3,12 +3,18 @@ import { Routes, Route, createBrowserRouter } from "react-router-dom";
 import Home from "../pages/Home";
 import { HiHome } from "react-icons/hi";
 import { BiSearch } from "react-icons/bi";
+import Search from "../pages/Search";
+import Liked from "../pages/Liked";
+import Layout from "../components/Layout";
 
 export function AppRoutes() {
   return (
     <Routes>
-      <Route path={"/"} element={<Home />}></Route>
-      <Route path={"/search"} element={<Sidebar />}></Route>
+      <Route element={<Layout />}>
+        <Route path={"/"} element={<Home />}></Route>
+        <Route path={"/search"} element={<Search />}></Route>
+        <Route path={"/liked"} element={<Liked />}></Route>
+      </Route>
     </Routes>
   );
 }
