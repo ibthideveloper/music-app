@@ -5,7 +5,6 @@ import usePlayer from "../hooks/usePlayer";
 import Box from "./Box";
 import Library from "./Library";
 import SidebarItem from "./SidebarItem";
-import type { Song } from "../../types/types";
 import { twMerge } from "tailwind-merge";
 
 interface SidebarProps {

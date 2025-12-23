@@ -7,7 +7,7 @@ interface ListItemProps {
   href: string;
 }
 
-const ListItem = ({ image, name, href }: ListItemProps) => {
+const ListItem = ({ image, name }: ListItemProps) => {
   const navigate = useNavigate();
 
   const onClick = () => {
