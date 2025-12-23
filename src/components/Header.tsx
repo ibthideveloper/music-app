@@ -61,10 +61,16 @@ const Header = ({ children, className }: HeaderProps) => {
 
         {/* Start of Mobile view */}
         <div className="flex md:hidden gap-x-2 items-center">
-          <button className="rounded-full p-2 bg-white flex items-center justify-center hover:opacity-75 transition cursor-pointer">
+          <button
+            onClick={() => navigate("/")}
+            className="rounded-full p-2 bg-white flex items-center justify-center hover:opacity-75 transition cursor-pointer"
+          >
             <HiHome className="text-black" size={20} />
           </button>
-          <button className="rounded-full p-2 bg-white flex items-center justify-center hover:opacity-75 transition cursor-pointer">
+          <button
+            onClick={() => navigate("/search")}
+            className="rounded-full p-2 bg-white flex items-center justify-center hover:opacity-75 transition cursor-pointer"
+          >
             <BiSearch className="text-black" size={20} />
           </button>
         </div>

@@ -5,21 +5,28 @@ import ListItem from "../components/ListItem";
 import * as likeImage from "../assets/like.jpg";
 import AuthModal from "../components/AuthModal";
 import UploadModal from "../components/UploadModal";
-import { getSongs } from "../services/songs.service";
+import { getSongsByUserId } from "../services/songs.service";
 import type { Song } from "../../types/types";
 import PageContent from "../components/PageContent";
+import { useUser } from "../hooks/useUser";
 
 const Home = () => {
   const [songs, setSongs] = useState<Song[]>([]);
+  const { user } = useUser();
 
   useEffect(() => {
     const loadSongs = async () => {
-      const result = await getSongs();
-      setSongs(result);
+      // Only show user's songs if logged in (songs are private)
+      if (user) {
+        const result = await getSongsByUserId();
+        setSongs(result);
+      } else {
+        setSongs([]);
+      }
     };
 
     loadSongs();
-  }, []);
+  }, [user]);
 
   return (
     <>
